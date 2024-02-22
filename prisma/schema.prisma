@@ -7,32 +7,46 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model model {
-  num  Int     @id @default(autoincrement())
-  noms String? @db.VarChar(25)
+model User {
+  IdUser         Int      @id @default(autoincrement())
+  Nom            String   @db.VarChar(25)
+  NomUtilisateur String   @db.VarChar(25)
+  email          String   @unique @db.VarChar(255)
+  PhotoProfil    String?  @db.VarChar(25)
+  MotPasse       String   @db.VarChar(25)
+  DateEnreg      DateTime @default(now()) @db.Timestamp(6)
+  role           Role     @default(USER)
+  active         Boolean  @default(false)
+  Follower       String?  @db.VarChar(25)
+  Following      String?  @db.VarChar(25)
+  Post           Post[]
+  Like           Like[]
+}
+
+enum Role {
+  USER
+  ADMIN
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  title     String   @db.VarChar(255)
-  createdAt DateTime @default(now()) @db.Timestamp(6)
-  content   String?
-  published Boolean  @default(false)
-  authorId  Int
-  User      User     @relation(fields: [authorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  IdPost      Int      @id @default(autoincrement())
+  ContenuPost String?  @db.VarChar(255)
+  ImagePost   String?
+  createdAt   DateTime @default(now()) @db.Timestamp(6)
+  updatedAt   DateTime @updatedAt
+  published   Boolean  @default(false)
+  Partage     Int
+  User        User     @relation(fields: [UserId], references: [IdUser])
+  UserId      Int
+  Like        Like[]
 }
 
-model Profile {
-  id     Int     @id @default(autoincrement())
-  bio    String?
-  userId Int     @unique
-  User   User    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-}
+model Like {
+  User       User @relation(fields: [UserIdlike], references: [IdUser])
+  UserIdlike Int
+  Postlike   Post @relation(fields: [PostId], references: [IdPost])
+  PostId     Int
+  NombreLike Int
 
-model User {
-  id      Int      @id @default(autoincrement())
-  name    String?  @db.VarChar(255)
-  email   String   @unique @db.VarChar(255)
-  Post    Post[]
-  Profile Profile?
+  @@id([UserIdlike, PostId])
 }
