@@ -1,12 +1,12 @@
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
-function getAllUsers() {
-    return prisma.user.findMany()
+function getAllTwitte() {
+    return prisma.post.findMany()
 }
 
-function getUser(Id) {
-    return prisma.user.findUnique({ where: { IdUser: Id } })
+function getTwitte(Id) {
+    return prisma.post.findUnique({ where: { IdPost: Id } })
 }
 
-module.exports = { getAllUsers, getUser };
+module.exports = { getAllTwitte, getTwitte };

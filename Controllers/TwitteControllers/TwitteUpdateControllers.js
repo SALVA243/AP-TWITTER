@@ -1,11 +1,11 @@
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
-function updateUser(user) {
-    return prisma.user.update({
-        where: { IdUser: user.IdUser },
-        data: user
+function updatePost(post) {
+    return prisma.post.update({
+        where: { IdPost: post.IdPost },
+        data: post
     })
 }
 
-module.exports = updateUser;
+module.exports = updatePost;

@@ -1,8 +1,8 @@
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
-function deleteUser(Id) {
-    return prisma.user.delete({ where: { IdUser: Id } })
+function deletePoste(Id) {
+    return prisma.post.delete({ where: { IdPost: Id } })
 }
 
-module.exports = deleteUser;
+module.exports = deletePoste;
