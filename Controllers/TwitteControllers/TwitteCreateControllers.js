@@ -1,8 +1,8 @@
-// const { PrismaClient } = require('@prisma/client')
-// const prisma = new PrismaClient()
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient()
 
-// function Poststwett() {
-//     return prisma.user.findMany()
-// }
+function addUser(user) {
+    return prisma.user.create({ data: user })
+}
 
-// module.exports = getAllPosts;
+module.exports = addUser;

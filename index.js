@@ -13,8 +13,8 @@ app.use(express.urlencoded());
 // app.use("/users/connection", require("./Routes/UsersRoutes/UserConnectionRoute"));
 app.use("/users/creation", require("./Routes/UsersRoutes/UserCreationRoute"));
 app.use("/users/read", require("./Routes/UsersRoutes/UserReadRoute"));
-// app.use("/users/update", require("./Routes/UsersRoutes/UserUpdateRoute"));
-// app.use("/users/delete", require("./Routes/UsersRoutes/UserDeleteRoute"));
+app.use("/users/update", require("./Routes/UsersRoutes/UserUpdateRoute"));
+app.use("/users/delete", require("./Routes/UsersRoutes/UserDeleteRoute"));
 
 
 app.listen(PORT, () => console.log('Server starts SucceFull'));

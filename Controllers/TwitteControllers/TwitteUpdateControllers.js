@@ -1,8 +1,11 @@
-// const { PrismaClient } = require('@prisma/client')
-// const prisma = new PrismaClient()
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient()
 
-// function modifTwitt() {
-//     return prisma.user.findMany()
-// }
+function updateUser(user) {
+    return prisma.user.update({
+        where: { IdUser: user.IdUser },
+        data: user
+    })
+}
 
-// module.exports = modifTwitt;
+module.exports = updateUser;

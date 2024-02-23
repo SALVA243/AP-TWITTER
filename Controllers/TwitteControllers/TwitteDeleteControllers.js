@@ -1,8 +1,8 @@
-// const { PrismaClient } = require('@prisma/client')
-// const prisma = new PrismaClient()
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient()
 
-// function Deletetwett() {
-//     return prisma.user.findMany()
-// }
+function deleteUser(Id) {
+    return prisma.user.delete({ where: { IdUser: Id } })
+}
 
-// module.exports = Deletetwett;
+module.exports = deleteUser;

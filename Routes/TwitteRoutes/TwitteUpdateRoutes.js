@@ -1,41 +1,11 @@
-// const express = require("express")
-// const router = express.Router();
+const express = require("express")
+const router = express.Router();
+const updateUsers = require("../../Controllers/UsersControllers/UsersUpdateControllers");
 
-// router.put(('/:id'), (req, res) => {
-//     res.json({ message: req.params.id });
-// });
-
-// module.exports = router;
-
-// // const express = require("express");
-// // const router = express.Router();
-
-// // const client = require('../../Config/db');
+router.patch(('/'), (req, res) => {
+    console.log('utilisateur modifié')
+    updateUsers(req.body).then(user => res.send(user))
+});
 
 
-// // router.post(('/'), (req, res) => {
-
-// //     const username = req.body['username'];
-// //     const password = req.body['password'];
-
-// //     console.log("Username :" + username);
-// //     console.log("PassWord :" + password);
-
-// //     const InsertSql = `INSERT INTO eleve(num,noms)  VALUES ('${username}', '${password}')`;
-
-// //     client
-// //         .query(InsertSql)
-// //         .then((response) => {
-// //             console.log("Success");
-// //             console.log(response);
-// //         })
-// //         .catch((err) => {
-// //             console.log(err);
-// //         })
-
-// //     res.json({ message: req.body.message });
-
-// // });
-
-
-// // module.exports = router;
+module.exports = router;

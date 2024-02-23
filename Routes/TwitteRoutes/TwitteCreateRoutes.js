@@ -1,30 +1,12 @@
-// const express = require("express");
-// const router = express.Router();
+const express = require("express")
+const router = express.Router();
+const addUser = require("../../Controllers/UsersControllers/UsersCreationControllers");
 
 
-// router.post(('/'), (req, res) => {
-
-//     const username = req.body['username'];
-//     const password = req.body['password'];
-
-//     console.log("Username :" + username);
-//     console.log("PassWord :" + password);
-
-//     const InsertSql = `INSERT INTO eleve(num,noms)  VALUES ('${username}', '${password}')`;
-
-//     client
-//         .query(InsertSql)
-//         .then((response) => {
-//             console.log("Success");
-//             console.log(response);
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         })
-
-//     res.json({ message: req.body.message });
-
-// });
+router.post(('/'), (req, res) => {
+    console.log('Utilisateur créé')
+    addUser(req.body).then(users => res.send(users))
+});
 
 
-// module.exports = router;
+module.exports = router;
