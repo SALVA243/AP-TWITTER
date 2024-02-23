@@ -5,4 +5,8 @@ function getAllUsers() {
     return prisma.user.findMany()
 }
 
-module.exports = getAllUsers;
+function getUser(Id) {
+    return prisma.user.findUnique({ where: { IdUser: Id } })
+}
+
+module.exports = { getAllUsers, getUser };

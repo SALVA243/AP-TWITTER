@@ -1,14 +1,9 @@
-// const { PrismaClient } = require('@prisma/client')
-// const prisma = new PrismaClient()
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient()
 
-// function getAllUsers() {
-//     return prisma.user.findMany()
-// }
+function updateUser() {
+    return prisma.user.update()
+}
 
-// module.exports = getAllUsers;
+module.exports = updateUser;
 
-// function getAllUsers() {
-//     return prisma.user.findMany()
-// }
-
-// module.exports = getAllUsers;
